@@ -1,0 +1,23 @@
+version: '3'
+services:
+        node-1:
+                image: mysql
+                build: .
+                ports:
+                        - "8040:8040"
+        
+        node-2: 
+                image: mysql
+                build: .
+                ports:
+                        - "8081:8081"
+                depends_on:
+                        - node-1
+
+        node-3:
+                image: mysql
+                build: .
+                ports:
+                        - "8082:8082"
+                depends_on:
+                        - node-2
